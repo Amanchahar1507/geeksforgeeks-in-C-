@@ -1,0 +1,16 @@
+bool isBinary(string str)
+{
+    int n,i;
+    n=str.length();
+    for(i=0;i<n;i++){
+    if(str[i]=='0' || str[i]=='1')
+    continue;
+    else 
+    {
+        // cout<<"0"<<endl;
+        return 0;
+    }
+    }
+    // cout<<"1"<<endl;
+    return 1;
+}
