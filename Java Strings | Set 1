@@ -1,0 +1,29 @@
+class Solution {
+  public:
+    string conRevstr(string S1, string S2) {
+       
+       string res = "";
+       for(int i=0;i<S1.length();i++)
+       {
+           res+=S1[i];
+       }
+      // cout<<res<<endl;
+       for(int j=0;j<S2.length();j++)
+       {
+           res +=S2[j];
+       }
+       //return res;
+        int k,n;
+       char temp;
+       n = res.length();
+       for(k=0;k<(n/2);k++)
+       {
+           temp = res[k];
+           res[k] = res[n-1-k];
+           res[n-1-k] = temp;
+       }
+       return res;
+       
+        // code here
+    }
+};
