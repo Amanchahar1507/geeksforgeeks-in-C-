@@ -1,0 +1,17 @@
+class Solution
+{
+  public:
+    string modify (string s)
+    {
+        string res = "";
+        for(int i=0;i<s.length();i++)
+        {
+            if(s[i]==' '){
+            continue;
+            }
+            res = res+s[i];
+        }
+        return res;
+        //code here.
+    }
+};
