@@ -1,0 +1,25 @@
+class Solution
+{
+  public:   
+    int countCamelCase (string s)
+    {
+        int i,count=0;
+        //string s1="";
+        //n = s.length();
+        for(i=0;i<s.length();i++)
+        {
+            if(s[i]>=65&&s[i]<=90)
+            {
+                count++;
+                
+            }
+            
+        }
+        return count;
+        //cout<< s1<<endl;
+    
+        //return s1.length();
+        
+    	//code here.
+    }
+};
