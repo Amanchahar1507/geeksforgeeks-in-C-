@@ -1,0 +1,19 @@
+string transform(string s)
+{
+    
+    int i,n;
+    n=s.length();
+    for(i=0;i<n;i++)
+    {
+        if(s[0]>=97)
+        {
+            s[i] = s[i]-32;
+        }
+        if(s[i]>=97&&s[i-1]==' ')
+        {
+            s[i] =s[i]-32;
+        }
+    }
+    return s;
+    // code here
+}
