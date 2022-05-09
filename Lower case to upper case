@@ -1,0 +1,14 @@
+string to_upper(string str){
+    int i,n;
+    //string s="";
+    for(i=0;i<str.length();i++)
+    {
+        if(str[i]>=97)
+        {
+            str[i]=str[i]-32;
+        }
+    }
+    return str;
+    //code
+    
+}
