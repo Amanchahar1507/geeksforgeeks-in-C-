@@ -1,0 +1,8 @@
+
+string conCat(string s1 , string s2)
+{
+    string s = "";
+   s = s1+s2;
+   return s;
+    // code here.
+}
