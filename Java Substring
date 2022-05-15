@@ -1,0 +1,15 @@
+class Solution {
+  public:
+    string javaSub(string S, int L, int R) {
+       string s1 = "";
+       for(int i=0;i<S.length();i++)
+       {
+           if(i>=L&&i<=R)
+           {
+               s1.push_back(S[i]);
+           }
+       }
+       return s1;
+        // code here
+    }
+};
