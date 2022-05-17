@@ -1,0 +1,30 @@
+vector<string> extractIntegerWords(string s)
+{
+    string s1 = "";
+    int i;    
+    vector<string>ans;
+    for(i=0;i<s.length()-1;i++)
+    {
+        if(isdigit(s[i]) && !isdigit(s[i+1]))
+        {
+            s1 = s1 + s[i];
+            ans.push_back(s1);
+            s1="";
+        }
+        if(isdigit(s[i]) && isdigit(s[i+1]))
+        {
+            s1 = s1 + s[i];
+        }
+       
+    }
+     if(isdigit(s[s.length()-1]))
+        {
+            s1 = s1 +s[s.length()-1];
+            ans.push_back(s1);
+        }
+    
+    
+    
+    return ans;
+    // code here
+}
