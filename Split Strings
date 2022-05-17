@@ -1,0 +1,37 @@
+class Solution
+{   
+public:
+    vector<string> splitString(string S) 
+    { 
+        string S1 = "";
+        string S2 = "";
+        string S3 = "";
+        for(int i=0;i<S.length();i++)
+        {
+            if(isupper(S[i])||islower(S[i]))
+            {
+                S1 = S1+S[i];
+                //S1.push_back(S[i]);
+            }
+            else if(isdigit(S[i]))
+            {
+                S2 = S2+S[i];
+                //S2.push_back(S[i]);
+            }
+            else
+            {
+                S3 = S3+S[i];
+                //S3.push_back(S[i]);
+            }
+        }
+        vector<string>ans = {S1,S2,S3};
+        return ans;
+        
+        //cout<<S1<<endl;
+        //cout<<"\n";
+        //cout<<S2<<endl;
+        //cout<<"\n";
+        //cout<<S3<<endl;
+        // code here 
+    } 
+};
