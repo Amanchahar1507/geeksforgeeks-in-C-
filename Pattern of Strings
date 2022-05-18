@@ -1,0 +1,18 @@
+class Solution{
+public:	
+	int i,k;
+	vector<string> pattern(string S)
+	{
+	    vector<string>str;
+	    int n = S.length();
+	    int i;
+	    for(i=0;i<n;i++)
+	    {
+	        str.push_back(S);
+	        S.pop_back();
+	    }
+	    return str;
+	    // Your code goes here
+	}
+
+};
