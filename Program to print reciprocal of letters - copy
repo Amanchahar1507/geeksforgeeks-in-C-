@@ -1,0 +1,26 @@
+class solution
+{
+public:
+    string reciprocalString(string S)
+    {
+       int i,n;
+       n = S.length();
+       string s1 = "";
+       for(i=0;i<n;i++)
+       {
+           if(islower(S[i])){
+           S[i] = 122-(S[i]-97);
+           }
+           if(isupper(S[i])){
+               S[i] = 90-(S[i]-65);
+           }
+           if(S[i]==32)
+           {
+               S[i] = S[i];
+           }
+           
+       }
+       return S;
+        // Write Your code here
+    }
+};
