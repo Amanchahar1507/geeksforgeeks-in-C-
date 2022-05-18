@@ -1,0 +1,17 @@
+class solution{
+public:
+    string triDownwards(string S) {
+       int i,n;
+       n = S.length();
+       string s1 ="";
+       for(i=0;i<n;i++)
+       {
+                s1 = s1+S;
+                S.erase(S.begin()+i);
+                S.insert(i,".");
+       }
+       
+       return s1;
+        // code here
+    }
+};
