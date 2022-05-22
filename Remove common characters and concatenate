@@ -1,0 +1,27 @@
+class Solution
+{
+    public:
+    //Function to remove common characters and concatenate two strings.
+    string concatenatedString(string s1, string s2) 
+    { 
+       string ans =""; 
+       //s = s1+s2;
+       //int n = s1.length();
+       //int n1 = s2.length();
+       //return s;
+       int i;
+       for(auto i:s1)
+       {
+           if(s2.find(i) == string::npos)
+           ans =ans +i;
+       }
+       for(auto i:s2)
+       {
+           if(s1.find(i) == string::npos)
+           ans =ans+i;
+       }
+       return (ans=="")?"-1":ans;
+        // Your code here
+    }
+
+};
