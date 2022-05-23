@@ -1,0 +1,30 @@
+class Solution {
+  public:
+       int RedOrGreen(int N,string S) {
+          int i,count1=0,count2=0;
+          //string s1,s2;
+          //n = S.length();
+          
+          for(i=0;i<N;i++)
+          {
+              if(S[i] =='R')
+              {
+                  count1++;
+              }
+              else
+              {
+                  count2++;
+              }
+              
+          }
+          //n1 = s1.length();
+          //n2 = s2.length();
+          if(count1>count2)
+          {
+              return count2;
+          }
+          else
+          return count1;
+           //code here
+    }
+};
