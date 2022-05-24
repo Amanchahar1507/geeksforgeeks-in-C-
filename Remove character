@@ -1,0 +1,16 @@
+class Solution {
+  public:
+    string removeChars(string string1, string string2) {
+        string s;
+        int i;
+        for(char i:string1)
+        {
+            if(string2.find(i)== -1)
+            {
+                s.push_back(i);
+            }
+        }
+        return s;
+        // code here
+    }
+};
