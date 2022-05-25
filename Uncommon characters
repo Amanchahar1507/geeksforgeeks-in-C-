@@ -1,0 +1,33 @@
+class Solution
+{
+    public:
+        string UncommonChars(string A, string B)
+        {
+            // code here
+            string v="";
+            set<char>s;
+            for(auto it:A){
+                s.insert(it);
+            }
+            set<char>t;
+            for(auto it:B){
+                t.insert(it);
+            }
+            for(auto it:s){
+                if(t.find(it)==t.end()){
+                    v.push_back(it);
+                }
+            }
+            for(auto it:t){
+                if(s.find(it)==s.end()){
+                    v.push_back(it);
+                }
+            }
+            sort(v.begin(),v.end());
+         if(v.size()==0){
+             return "-1";
+         }
+         return v;
+        }
+        
+};
