@@ -1,0 +1,52 @@
+string printNumber(string s, int n) 
+{
+    string s1;
+    int i;
+    n = s.length();
+    for(i=0;i<n;i++)
+    {
+        if(s[i]=='a'||s[i]=='b'||s[i]=='c')
+        {
+            s1 = s1+'2';
+        }
+        if(s[i]=='d'||s[i]=='e'||s[i]=='f')
+        {
+            s1 = s1+ '3';
+        }
+        
+         if(s[i]=='g'||s[i]=='h'||s[i]=='i')
+        {
+            s1 = s1+ '4';
+        }
+        
+         if(s[i]=='j'||s[i]=='k'||s[i]=='l')
+        {
+            s1 = s1+ '5';
+        }
+        
+         if(s[i]=='m'||s[i]=='n'||s[i]=='o')
+        {
+            s1 = s1+ '6';
+        }
+        
+         if(s[i]=='p'||s[i]=='q'||s[i]=='r'||s[i]=='s')
+        {
+            s1 = s1+ '7';
+        }
+        
+         if(s[i]=='t'||s[i]=='u'||s[i]=='v')
+        {
+            s1 = s1+ '8';
+        }
+        
+         if(s[i]=='w'||s[i]=='x'||s[i]=='y'||s[i]=='z')
+        {
+            s1 = s1+ '9';
+        }
+        
+        
+    }
+    return s1;
+     
+    //code here
+}
