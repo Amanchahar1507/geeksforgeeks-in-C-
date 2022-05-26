@@ -1,0 +1,25 @@
+class Solution
+{
+  public:
+    char firstRep (string s)
+    {
+        int i,j,n;
+        
+        n = s.length();
+        unordered_map<char,int>m;
+        char ch;
+        for(i=0;i<n;i++)
+        {
+            m[s[i]]++;   
+        } 
+        for(i=0;i<n;i++)
+        {
+            if(m[s[i]]>=2)
+            {
+                return s[i];
+            }
+        }
+        return '#';
+        //code here.
+    }
+};
