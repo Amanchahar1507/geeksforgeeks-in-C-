@@ -1,0 +1,32 @@
+class Solution {
+  public:
+    int isGoodorBad(string S) {
+        
+        int v=0,c=0;
+        int i,n;
+        n = S.length();
+        for(i=0;i<n;i++)
+        {
+            if(S[i]=='a'||S[i]=='e'||S[i]=='i'||S[i]=='o'||S[i]=='u')
+            {
+                v++;
+                c=0;
+            }
+            else
+            {
+                c++;
+                v=0;
+            }
+            
+            if(c>3||v>5)
+            {
+                
+               return 0; 
+                
+            }
+        }
+            
+        return 1;
+        // code here
+    }
+};
