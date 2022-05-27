@@ -1,0 +1,25 @@
+class Solution
+{
+  public:
+    
+    int extractMaximum(string S) 
+    { 
+        int i,n;
+        int num = 0,ans=-1;
+        n = S.length();
+        for(i=0;i<n;i++)
+        {
+            if(S[i]>='0'&&S[i]<='9')
+            {
+                num = num*10+(S[i]-'0');
+                ans = max(ans,num);
+                
+            }
+            else
+            num=0;
+            
+        }
+        return ans;
+        //code here.
+    } 
+};
