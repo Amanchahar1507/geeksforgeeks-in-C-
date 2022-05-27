@@ -1,0 +1,22 @@
+string firstRepChar(string s)
+{
+   string ans;
+   set<char>ch;
+   int i,n;
+   n = s.length();
+   for(i=0;i<n;i++)
+   {
+       if(ch.find(s[i])==ch.end())
+       {
+           ch.insert(s[i]);
+       }
+       else
+       {
+           ans.push_back(s[i]);
+           return ans;
+       }
+   }
+   return "-1";
+    
+    //code here.
+}
