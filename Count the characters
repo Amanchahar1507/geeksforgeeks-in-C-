@@ -1,0 +1,29 @@
+class Solution
+{
+  public:
+        int getCount (string S, int N)
+        {
+            
+            map<char,int>v1;
+            int i,n;
+            n = S.length();
+            for(i=0;i<n;i++)
+            {
+                if(S[i]!=S[i+1])
+                {
+                    v1[S[i]]++;
+                }
+            }
+            //map<char,int>::iterator it;
+            int ct=0;
+            for(auto it=v1.begin();it!=v1.end();it++)
+            {
+                if(it->second==N)
+                {
+                    ct++;
+                }
+            }
+            return ct;
+            //code here.
+        }
+};
