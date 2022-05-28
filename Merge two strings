@@ -1,0 +1,23 @@
+string merge (string S1, string S2)
+{
+   int i=0,n1,n2;
+   n1 = S1.length();
+   n2 = S2.length();
+   string s = "";
+   while(i<n1 &&i<n2)
+   {
+     s = s + S1[i];
+     s = s + S2[i];
+     i++;
+   }
+   if(i < n1)
+   {
+       s = s + S1.substr(i);
+   }
+   else if(i < n2)
+   {
+       s = s + S2.substr(i);
+   }
+   return s;
+    // your code here
+}
