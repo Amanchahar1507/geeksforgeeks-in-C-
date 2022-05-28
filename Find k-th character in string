@@ -1,0 +1,61 @@
+class Solution{
+public:		
+	
+	char kthCharacter(int m, int n, int k)
+	{
+	    
+	  
+        string s = "";	  
+	   //vector<int>v;
+	   //vector<int>p;
+	   if(m==0)
+	   {
+	       s ="0";
+	   }
+	   while(m>0)
+	   {
+	       int rem = m%2;
+	       //m = m/2;
+	       if(rem==1)
+	       {
+	           s = s+'1';
+	       }
+	       else
+	       {
+	           s=s+'0';
+	       }
+	       
+	      m = m/2; 
+	   }
+	   reverse(s.begin(),s.end());
+	   //cout<<v.size();
+	   string ans="";
+
+	   while(n>0)
+	   {
+	       for(int i=0;i<s.length();i++)
+	       {
+	           if(s[i]=='0')
+	       
+	       {
+	          ans=ans+"01";   
+	       }
+	       else
+	       {
+	           ans = ans+"10";
+	       }
+	       }
+	       s = ans;
+	       ans="";
+	       n--;
+	       
+	   }
+	   
+	   return s[k-1];
+	   //cout<<s;
+	   
+	   
+	    
+	    // Your code goes here
+	}
+};
