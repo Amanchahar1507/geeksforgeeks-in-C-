@@ -1,0 +1,28 @@
+class Solution{
+public:	
+		
+		
+	int isSame(string s)
+	{
+	   int i,n=0,m=0;
+	   
+	   for(i=0;i<s.length();i++)
+	   {
+	      if(!(s[i]>='0'&&s[i]<='9'))
+	      {
+	          n++;
+	      }
+	      else
+	      {
+	          m = m*10+(s[i]-'0');
+	      }
+	   }
+	   //return m;
+	   //return n;
+	   if(n==m)
+	   return 1;
+	   else
+	   return 0;
+	    // Your code goes here
+	}
+};
