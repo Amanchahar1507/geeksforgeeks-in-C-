@@ -1,0 +1,28 @@
+string maximumFrequency(string s){
+       map<string, int> mp;
+        vector<string> str;
+        string st;
+        
+        for(int i = 0; i < s.size(); i++){
+            while(i < s.size() && s[i] != ' '){
+                st += s[i];
+                i++;
+            }
+            str.push_back(st);
+            mp[st]++;
+            st.resize(0);
+        }
+        
+        int mx = 1;
+        for(auto &x: mp){
+            mx = max(mx, x.second);
+        }
+        
+        for(int i = 0; i < str.size(); i++){
+            auto it = mp.find(str[i]);
+            if(it->second == mx && it != mp.end())
+                return str[i] + " " + to_string(mx);
+        }
+        
+        return "never prints";    
+}
