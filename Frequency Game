@@ -1,0 +1,24 @@
+int LargButMinFreq(int arr[], int n) {
+
+       map<int,int>mp;
+   for(int i=0;i<n;i++)
+   {
+       mp[arr[i]]++;
+   }
+   
+   int min_freq = 1;
+   int max = 0;
+   for(auto x:mp)
+   {
+       if(x.second <= min_freq)
+       {
+           min_freq = x.second;
+           if(max < x.first)
+               max = x.first;
+       }
+           
+   }
+   return max;
+
+    // code here
+}
