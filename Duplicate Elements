@@ -1,0 +1,30 @@
+class Geeks
+{
+    // print the elements which appear more than
+    // once in the array in sorted order
+    public static void SortedDuplicates(int arr[], int n)
+    {
+        HashSet<Integer> hs = new HashSet<>();
+     TreeSet<Integer> tr = new TreeSet<>();
+     for(int i=0; i<arr.length; i++){
+         int a=arr[i];
+         if(hs.contains(a)==false){
+             hs.add(a);
+         }
+         else{
+             tr.add(a);
+         }
+     }
+     
+     if(tr.size()==0){
+         System.out.print("-1");
+     }
+     else{
+         for(int it: tr){
+             System.out.print(it+ " ");
+          }
+     }
+        //Your code here
+     }
+    
+}
