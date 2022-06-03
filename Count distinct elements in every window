@@ -1,0 +1,24 @@
+class Solution{
+  public:
+    vector <int> countDistinct (int A[], int n, int k)
+    {
+        vector<int>v;
+        unordered_map<int,int>m;
+        for(int i=0;i<k;i++)
+        {
+            m[A[i]]++;
+        }
+        v.push_back(m.size());
+        for(int i=0;i<n-k;i++)
+        {
+             m[A[i+k]]++;
+            if(m[A[i]]==1){
+                m.erase(A[i]);
+            }
+           else m[A[i]]--;
+            v.push_back(m.size());
+        }
+        return v;
+        //code here.
+    }
+};
