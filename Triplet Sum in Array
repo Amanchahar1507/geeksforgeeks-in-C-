@@ -1,0 +1,18 @@
+class solution{
+public:
+bool find3Numbers(int A[], int n, int X)
+    {
+       for(int i=0;i<n;i++){
+           unordered_set<int>s;
+           int target = X-A[i];
+           for(int j=i+1;j<n;j++){
+               if(s.count(target-A[j]))
+               return true;
+               s.insert(A[j]);
+           }
+       }
+        return false;
+        //Your Code Here
+    }
+
+};
