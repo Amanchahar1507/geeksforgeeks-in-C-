@@ -1,0 +1,44 @@
+  string smallestWindow (string s, string p)
+    {
+        
+        int n = s.size();
+        int m = p.size();
+        if(m>n){
+            return "-1";
+        }
+    
+       map<char,int>mp;
+       for(int i=0;i<m;i++){
+           mp[p[i]]++;
+       }
+       int count = mp.size();
+       int i=0,j=0,start_index =0,min_length = n;
+       bool found = false;
+      while(j<n){
+          if(mp.find(s[j]) !=mp.end()){
+              if(--mp[s[j]]==0){
+                  count--;
+              }
+          }
+          while(count==0){
+              found = true;
+              if(min_length>j-i+1){
+                  min_length = j-i+1;
+                  start_index = i;
+              }
+              if(mp.find(s[i]) !=mp.end()){
+                  if(++mp[s[i]]>0){
+                      count++;
+                  }
+              }
+              i++;
+          }
+          j++;
+      }
+      if(found){
+          return s.substr(start_index,min_length);
+      }
+      return "-1";
+        // Your code here
+    }
+};
