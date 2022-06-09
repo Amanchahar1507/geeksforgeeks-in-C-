@@ -1,0 +1,30 @@
+class Solution{
+public:	
+
+	void matchPairs(char nuts[], char bolts[], int n) {
+	  unordered_map<char,int>mp;
+	  mp['!']=1;
+	  mp['#']=2;
+	  mp['$']=3;
+	  mp['%']=4;
+	  mp['&']=5;
+	  mp['*']=6;
+	  mp['@']=7;
+	  mp['^']=8;
+	  mp['~']=9;
+	  set<pair<char,int>>s;
+	  for(int i=0;i<n;i++){
+	      if(mp.find(nuts[i]) !=mp.end()){
+	          auto it=mp.find(nuts[i]);
+	          s.insert({nuts[i],it->second});
+	      }
+	  }
+	  int i=0,j=0;
+	  for(auto it:s){
+	      nuts[i++]=it.first;
+	      bolts[j++]=it.first;
+	  }
+	    // code here
+	}
+
+};
