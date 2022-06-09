@@ -1,0 +1,28 @@
+class solution{
+public:
+    //Complete this function
+    //Function to sort the array according to frequency of elements.
+    vector<int> sortByFreq(int arr[],int n)
+    {
+       unordered_map<int,int>mp;
+       for(int i=0;i<n;i++){
+           mp[arr[i]]++;
+       }
+       priority_queue<pair<int,int>>max_heap;
+       for(auto &it:mp){
+           max_heap.push({it.second,-1*it.first});
+       }
+       vector<int>v;
+       while(!max_heap.empty()){
+           int f = max_heap.top().first;
+           int e = -1*max_heap.top().second;
+           for(int i=1;i<=f;i++){
+               v.emplace_back(e);
+           }
+           max_heap.pop();
+       }
+       return v;
+          //Your code here
+    }
+    
+};
