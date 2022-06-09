@@ -1,0 +1,21 @@
+class Solution{
+  public:
+    vector<vector<string> > Anagrams(vector<string>& string_list) {
+       vector<vector<string>>v;
+       int n = string_list.size();
+       if(n==0){
+           return v;
+       }
+       unordered_map<string,vector<string>>mp;
+       for(auto it:string_list){
+           string str = it;
+           sort(str.begin(),str.end());
+           mp[str].push_back(it);
+       }
+       for(auto it:mp){
+           v.push_back(it.second);
+       }
+       return v;
+        //code here
+    }
+};
