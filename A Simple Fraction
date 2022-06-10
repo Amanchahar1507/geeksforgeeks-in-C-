@@ -1,0 +1,27 @@
+ class solution{
+ public:
+	string fractionToDecimal(int numerator, int denominator) {
+	   string s;
+	   int ans = numerator/denominator;
+	   s = to_string(ans);
+	   int r = numerator%denominator;
+	   if(r==0){
+	       return s;
+	   }
+	   else s+='.';
+	   unordered_map<int ,int>mp;
+	   while(r!=0){
+	       if(mp.count(r)){
+	           s.insert(mp[r],"(");
+	           s+=')';
+	           return s;
+	       }
+	       mp[r] = s.length();
+	       r*=10;
+	       ans = r/denominator;
+	       s +=to_string(ans);
+	       r %=denominator;
+	   }
+	    // Code here
+	}
+};
