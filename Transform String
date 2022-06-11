@@ -1,0 +1,33 @@
+{
+    public:
+    int transform (string A, string B)
+    {
+        int sum =0 ;
+        for(int i=0;i<A.size();i++)
+        {
+            sum = sum +A[i];
+            sum = sum -B[i];
+        }
+        if(sum !=0)return -1;
+        
+        int i=A.size();
+        int j = B.size();
+        int count = 0;
+        if(i!=j)return -1;
+        while(i>=0 && j>=0)
+        {
+            if(A[i]!=B[j])
+            {
+                count++;
+                i--;
+            }
+            else
+            {
+                i--;
+                j--;
+            }
+        }
+        return count;
+        //code here.
+    }
+};
