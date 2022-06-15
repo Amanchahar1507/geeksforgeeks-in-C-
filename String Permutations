@@ -1,0 +1,24 @@
+ class solution{
+ public:
+    //Complete this function
+    void permu(int index, string &S, vector<string>&ans){
+        if(index==S.size()){
+            ans.push_back(S);
+            return;
+        }
+        for(int i=index;i<S.size();i++){
+            swap(S[i],S[index]);
+            permu(index+1,S,ans);
+            swap(S[i],S[index]);
+        }
+    }
+    
+    vector<string> permutation(string S)
+    {
+        vector<string>ans;
+        permu(0,S,ans);
+        sort(ans.begin(),ans.end());
+        return ans;
+        //Your code here
+    }
+};
