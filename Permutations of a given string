@@ -1,0 +1,29 @@
+class solution
+{
+	public:
+	    void permu(int index, string S, set<string>&ans){
+	        if(index == S.size()){
+	            ans.insert(S);
+	            return;
+	        }
+	        
+	        for(int i=index;i<S.size();i++){
+	            swap(S[index],S[i]);
+	            permu(index+1,S,ans);
+	            swap(S[index],S[i]);
+	        }
+	    }
+	
+		vector<string>find_permutation(string S)
+		{
+		    set<string> ans;
+		    permu(0,S,ans);
+		    vector<string>res;
+		    for(auto it:ans){
+		        res.push_back(it);
+		    }
+		    sort(res.begin(),res.end());
+		    return res;
+		    // Code here there
+		}
+};
