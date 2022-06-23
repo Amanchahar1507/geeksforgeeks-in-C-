@@ -1,0 +1,19 @@
+void solve(int index, char str[], string s, vector<string>&ans){
+    if(index == strlen(str)){
+        ans.push_back(s);
+        return;
+    }
+    solve(index+1,str,s+str[index],ans);
+    if(index!=strlen(str)-1){
+        solve(index+1, str, s+str[index]+" ",ans);
+    }
+}
+
+vector<string>  spaceString(char str[])
+{
+    vector<string>ans;
+    string s="";
+    solve(0,str,s,ans);
+    return ans;
+//Your code here
+}
