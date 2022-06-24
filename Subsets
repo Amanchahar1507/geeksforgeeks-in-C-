@@ -1,0 +1,26 @@
+class Solution
+{
+    public:
+    void solve(int index, vector<int>&A, vector<int>&ds, vector<vector<int>>&ans){
+        if(index>=A.size()){
+            ans.push_back(ds);
+            return;
+        }
+        
+            ds.push_back(A[index]);
+            solve(index+1,A,ds,ans);
+            ds.pop_back();
+            solve(index+1,A,ds,ans);
+        
+    }
+    
+    vector<vector<int> > subsets(vector<int>& A)
+    {
+        vector<vector<int>>ans;
+        vector<int>ds;
+        solve(0,A,ds,ans);
+        sort(ans.begin(),ans.end());
+        return ans;
+        //code here
+    }
+};
