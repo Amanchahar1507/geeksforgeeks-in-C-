@@ -1,0 +1,30 @@
+class Solution{
+public:	
+
+    void solve(int one, int zero, string s, vector<string>&ans,int N){
+        if(N==0){
+            ans.push_back(s);
+            return;
+        }
+        
+        s.push_back('1');
+        solve(one+1,zero,s,ans,N-1);
+        s.pop_back();
+        if(one>zero){
+            s.push_back('0');
+            solve(one,zero+1,s,ans,N-1);
+            s.pop_back();
+        }
+        
+    }
+	vector<string> NBitBinary(int N)
+	{
+	    vector<string>ans;
+	    string s ="";
+	    int one = 0;
+	    int zero = 0;
+	    solve(one,zero,s,ans,N);
+	    return ans;
+	    // Your code goes here
+	}
+};
