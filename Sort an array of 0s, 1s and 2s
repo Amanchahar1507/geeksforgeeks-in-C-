@@ -1,0 +1,32 @@
+ public:
+    void sort012(int a[], int n)
+    {
+        // code here
+        int k=0;
+        int count1=0,count2=0,count3=0;
+        for(int i=0;i<n;i++){
+            if(a[i]==0){
+                count1++;
+            }
+            if(a[i]==1){
+                count2++;
+            }
+            if(a[i]==2){
+                count3++;
+            }
+            
+        }
+        while(count1--){
+            a[k++]=0;
+            //k++;
+        }
+        while(count2--){
+            a[k++]=1;
+            //k++;
+        }
+        while(count3--){
+            a[k++]=2;
+            //k++;
+        }
+    }
+    
