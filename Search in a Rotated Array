@@ -1,0 +1,38 @@
+ public:
+    int search(int A[], int s, int e, int K){
+        
+    int mid;
+    while(s<=e){
+        mid = s + (e-s)/2;
+        if(A[mid]==K) return mid;
+        else if(A[s]<=A[mid]){
+            if(K>=A[s] && K<A[mid]){
+                e= mid-1;
+            }
+            else{
+                s = mid +1;
+            }
+            
+        }
+        else{
+            if(K<A[e] && K>A[mid]){
+                s = mid +1;
+            }
+            else
+            {
+                e = mid -1;
+            }
+        }
+        
+    }
+    return -1;
+    //complete the function here
+    // int pivot=pivotG(A,l,h);
+    // if(key >= A[pivot] && key<=A[h]){
+    //     return binarySearch(A,pivot,h,key);
+    // }
+    // else{
+    //     return binarySearch(A,l,pivot-1,key);
+    // }
+    }
+};
