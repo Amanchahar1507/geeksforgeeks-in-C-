@@ -1,0 +1,54 @@
+link --  https://practice.geeksforgeeks.org/problems/find-first-and-last-occurrence-of-x0849/1/?page=1&difficulty[]=0&category[]=Binary%20Search&sortBy=submissions#
+
+----------------code -----------------
+
+ int firstIndex(vector<long long> &v, long long x){
+        int ans = -1;
+        int s = 0;
+        int e = v.size()-1;
+        int mid;
+        while(s<=e){
+            mid = s + (e-s)/2;
+            if(v[mid] == x){
+                ans = mid;
+                e=mid-1;
+            }
+            else if(v[mid]<x){
+                s= mid +1;
+            }
+            else
+                e=mid-1;
+        }
+        return ans;
+    }
+    
+     int lastIndex(vector<long long> &v, long long x){
+        int ans = -1;
+        int s = 0;
+        int e = v.size()-1;
+        int mid;
+        while(s<=e){
+            mid = s + (e-s)/2;
+            if(v[mid] == x){
+                ans = mid;
+                // cout<<ans<<" ";
+                s=mid+1;
+            }
+            else if(v[mid]<x){
+                s= mid +1;
+            }
+            else
+                e=mid-1;
+        }
+        return ans;
+    }
+    
+    
+    pair<long,long> indexes(vector<long long> v, long long x)
+    {
+        pair<long ,long>p;
+        p.first = firstIndex(v,x);
+        p.second = lastIndex(v,x);
+        return p;
+        // code here
+    }
