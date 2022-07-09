@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int findPeakElement(vector<int>& a) 
+    {
+        int s =0;
+        int n = a.size();
+        int e = n-1;
+        int mid;
+        int ans =-1;
+        while(s<=e){
+             mid = s + (e-s)/2;
+              if((mid==0 ||a[mid]>a[mid-1]) && (mid==n-1 ||a[mid]>a[mid+1])){
+                  return a[mid];
+              }
+              else if(a[mid]>a[mid-1] && a[mid]<a[mid+1]){
+                  s = mid +1;
+              }
+              else {
+                  e = mid-1 ;
+              }
+            //  mid = s + (e-s)/2;
+            //  if(a[mid]>a[mid+1]){
+            //      ans = a[mid];
+            //      e = mid-1;
+            //  }
+            //  else{
+            //      s = mid +1;;
+            //  }
+        } 
+        return ans;
+        // Code here.
+    }
+};
