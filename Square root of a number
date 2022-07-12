@@ -1,0 +1,20 @@
+long long int floorSqrt(long long int x) 
+{
+    long long int s = 0;
+    long long int e = x;
+    long long int mid;
+    long long int ans;
+    while(s<=e){
+        mid = s + (e-s)/2;
+        long long int square = mid*mid;
+        if(square<=x){
+            ans = mid;
+            s = mid +1;
+        }
+        else{
+            e = mid -1;
+        }
+    }
+    return ans;
+    // Your code goes here   
+}
