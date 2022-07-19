@@ -1,0 +1,27 @@
+class Solution{
+  public:
+    
+    // A[]: input array
+    // N: input array
+    //Function to sort the binary array.
+    void binSort(int A[], int N)
+    {
+        int i=0;
+       int j=0;
+        while(i<N){
+            if(A[i]==0){
+                swap(A[i],A[j]);
+                i++;
+                j++;
+            }
+            else{
+                i++;
+            }
+        }
+       //Your code here
+       
+       /**************
+        * No need to print the array
+        * ************/
+    }
+};
