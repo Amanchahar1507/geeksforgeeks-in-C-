@@ -1,0 +1,36 @@
+link = https://practice.geeksforgeeks.org/problems/plus-one/1?page=1&category[]=STL&sortBy=submissions
+
+public:
+  
+    vector<int>reverse(vector<int>&ans){
+        int n = ans.size();
+        int s = 0;
+        int e = n-1;
+        while(s<e){
+            swap(ans[s],ans[e]);
+            s++;
+            e--;
+        }
+        return ans;
+    }
+    vector<int> increment(vector<int> arr ,int N) {
+        vector<int>ans;
+        int sum = 0;
+        int carry =1;
+        int i =N-1;
+         while(i>=0 ){
+            sum = arr[i]+carry;
+            carry = sum/10;
+            sum = sum%10;
+            ans.push_back(sum);
+            i--;
+        }
+        while(carry!=0){
+            sum = carry;
+            carry = sum/10;
+            sum = sum%10;
+            ans.push_back(sum);
+        }
+        return reverse(ans);
+        // code here
+    }
