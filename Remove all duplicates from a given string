@@ -1,0 +1,23 @@
+link = https://practice.geeksforgeeks.org/problems/remove-all-duplicates-from-a-given-string4321/1
+
+class Solution{
+public:
+	string removeDuplicates(string str) {
+	   int n= str.length();
+	   string ans = "";
+	   set<char>s;
+	   for(int i=0;i<n;i++){
+	       char c = str[i];
+	       if(s.find(c) !=s.end()){
+	          continue;
+	       }
+	       else{
+	           s.insert(str[i]);
+	       }
+	       
+	       ans = ans + str[i];
+	 }
+	   return ans;
+	    // code here
+	}
+  };
