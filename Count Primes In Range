@@ -1,0 +1,25 @@
+link = https://practice.geeksforgeeks.org/problems/count-primes-in-range1604/1
+
+   vector<bool>prime(R+1,true);
+       int count=0;
+       prime[1]=prime[0]=false;
+       for(int i=2;i*i<=R;i++)
+       {
+           if(prime[i])
+           {
+               for(int j=2*i; j<=R; j=j+i)
+               {
+                   prime[j]=0;
+               }
+           }
+       }
+       
+       for(int i=L;i<=R;i++)
+       {
+               if(prime[i])
+                   count++;
+       }
+       return count;
+   
+        // code here
+    }
