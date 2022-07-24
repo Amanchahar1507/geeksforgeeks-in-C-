@@ -1,0 +1,16 @@
+link = https://practice.geeksforgeeks.org/problems/factorial-number2446/1?page=1&sortBy=submissions&searchQuery=factorial
+
+public:
+    int isFactorial(int N){
+       int ans =1;
+       while(N!=1){
+           if(N%ans!=0){
+               return 0;
+           }
+           N = N/ans;
+           ans++;
+       }
+       return 1;
+       
+        //code here
+    }
