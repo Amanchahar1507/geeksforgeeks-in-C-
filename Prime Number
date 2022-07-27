@@ -1,0 +1,13 @@
+link = https://practice.geeksforgeeks.org/problems/prime-number2314/1?page=1&category[]=Prime%20Number&sortBy=submissions
+
+    int isPrime(int N){
+        if(N<2){
+            return 0;
+        }
+       for(int i=2;i*i<=N;i++){
+           if(N%i==0){
+               return 0;
+           }
+       } // code here
+       return 1;
+    }
