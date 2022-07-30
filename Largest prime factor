@@ -1,0 +1,31 @@
+link = https://practice.geeksforgeeks.org/problems/largest-prime-factor2601/1?page=1&category[]=Prime%20Number&sortBy=submissions
+
+public:
+
+    bool Isprime(int &N){
+       if(N<=1){
+           return false;
+       } 
+       if(N==2){
+           return true;
+       }
+       for(int i=2;i*i<=N;i++){
+           if(N%i==0){
+             return false;  
+           }
+       }
+       return true;
+       
+    }
+    long long int largestPrimeFactor(int N){
+      int count=0;
+      for(int i=2;i<=N;i++){
+          if(N%i==0&&Isprime(i)){
+            if(i>count)
+            count =i;
+          }
+          
+      }
+      return count;
+        // code here
+    }
