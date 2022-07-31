@@ -1,0 +1,32 @@
+link = https://practice.geeksforgeeks.org/problems/sum-of-primes0042/1?page=1&category[]=Prime%20Number&sortBy=submissions
+
+class Solution{
+public:
+
+     bool Isprime(int &n){
+           if(n<=1){
+               return false;
+           }
+           if(n==2) return true;
+           for(int i=2;i*i<=n; i++){
+               if(n%i==0){
+                   return false;
+               }
+           }
+           return true;
+       }
+    int primeSum(int N){
+      int sum = 0;
+      
+      while(N>0){
+          int ans = N%10;
+          if(Isprime(ans)){
+          
+             sum = sum + ans;
+          }
+                N = N/10;
+      }
+      return sum;
+        // code here
+    }
+  };  
