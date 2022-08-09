@@ -1,0 +1,41 @@
+link = https://practice.geeksforgeeks.org/problems/quick-sort/1
+
+ public:
+    //Function to sort an array using quick sort algorithm
+    
+    void quickSort(int arr[], int low, int high)
+    {
+        if(low>=high){
+            return;}
+    
+    int p = partition(arr,low,high);
+
+    //Recursive call
+    quickSort(arr,low,p-1);
+
+    quickSort(arr,p+1,high);
+        // code here
+    }
+    
+    public:
+    
+    int partition (int arr[], int low, int high)
+    {
+        int pivot=arr[low];
+       int start=low;
+       int end=high;
+       while(start<end){
+           while(arr[start]<=pivot){
+               start++;
+           }
+           while(arr[end]>pivot){
+               end--;
+           }
+           if(start<end)
+           swap(arr[start],arr[end]);
+       }
+       swap(arr[low],arr[end]);
+       return (end);
+       // Your code here
+    }
+};
