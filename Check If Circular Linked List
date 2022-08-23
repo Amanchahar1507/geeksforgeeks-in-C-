@@ -1,0 +1,21 @@
+link = https://practice.geeksforgeeks.org/problems/circular-linked-list/1?page=1&sortBy=submissions&searchQuery=circular
+
+bool isCircular(Node *head)
+{
+   if(head == NULL){
+       return true;
+   }
+   
+   Node* temp = head->next;
+   while(temp !=NULL && temp != head){
+       temp = temp->next;
+   }
+   
+   if(temp == head){
+       return true;
+   }
+   if(temp == NULL){
+       return false;
+   }
+   // Your code here
+}
