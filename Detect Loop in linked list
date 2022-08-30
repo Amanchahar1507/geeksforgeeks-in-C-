@@ -1,0 +1,30 @@
+link = https://practice.geeksforgeeks.org/problems/detect-loop-in-linked-list/1?page=1&category[]=Linked%20List&sortBy=submissions
+
+class Solution
+{
+    public:
+   
+    bool detectLoop(Node* head)
+    {
+        if(head->next == NULL){
+            return false;
+        }
+       Node*slow = head;
+       Node*fast = head;
+       //Node*temp = head;
+       while(slow != NULL && fast !=NULL){
+           
+           fast = fast->next;
+           if(fast!=NULL){
+               fast = fast->next;
+           }
+           slow = slow->next;
+           if(slow==fast){
+               return true;
+           }
+       }
+       
+       return false;
+        
+    }
+};
