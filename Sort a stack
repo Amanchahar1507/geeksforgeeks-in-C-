@@ -1,0 +1,27 @@
+link = https://practice.geeksforgeeks.org/problems/sort-a-stack/1?page=1&difficulty[]=0&category[]=Stack&sortBy=submissions
+
+void insert(stack<int>&s,int top){
+    if(s.empty() || (!s.empty() && s.top()<top)){
+        s.push(top);
+        return;
+    }
+    int num = s.top();
+    s.pop();
+    insert(s,top);
+    s.push(num);
+    return;
+}
+
+void solve(stack<int>&s){
+    if(s.empty()) return;
+    int top = s.top();
+    s.pop();
+    solve(s);
+    insert(s,top);
+}
+
+void SortedStack :: sort()
+{
+  solve(s);
+   
+}
