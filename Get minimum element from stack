@@ -1,0 +1,48 @@
+link = https://practice.geeksforgeeks.org/problems/get-minimum-element-from-stack/1?page=1&difficulty[]=1&category[]=Stack&sortBy=submissions
+
+class Solution{
+    int mini  = INT_MAX;
+    stack<int> s;
+    public:
+    
+       int getMin(){
+           if(s.size()==0) return -1;
+           return mini;
+       }
+       
+       int pop(){
+         if(s.empty()){
+             mini = -1;
+             return -1;
+         }
+         else{
+             int curr = s.top();
+             s.pop();
+             if(mini>curr){
+                 int val = mini;
+                 mini = 2*mini - curr;
+                 return val;
+             }
+             else{
+                 
+                 return curr;
+             }
+         }
+       }
+       
+       void push(int x){
+           if(s.empty()){
+               s.push(x);
+               mini = x;
+           }
+           
+           else{
+               if(x<mini){
+                   s.push(2*x-mini);
+                   mini = x;
+               }
+               else{
+                   s.push(x);
+               }
+           }
+       }
