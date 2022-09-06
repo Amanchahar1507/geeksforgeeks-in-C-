@@ -1,0 +1,15 @@
+link = https://practice.geeksforgeeks.org/problems/implement-stack-using-array/1?page=1&difficulty[]=-1&category[]=Stack&sortBy=submissions
+
+void MyStack :: push(int x)
+{
+    top++;
+   arr[top] = x;
+}
+int MyStack :: pop()
+{
+     if(top==-1){
+         return -1;
+     }   
+     int ans =  arr[top--];
+     return ans;
+}
