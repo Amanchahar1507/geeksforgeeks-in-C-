@@ -1,0 +1,21 @@
+link = https://practice.geeksforgeeks.org/problems/implement-stack-using-linked-list/1?page=1&difficulty[]=-1&category[]=Stack&sortBy=submissions
+
+void MyStack ::push(int x) 
+{
+     StackNode*temp=new StackNode(x);
+    temp->next=top;
+    top=temp;
+}
+
+
+int MyStack ::pop() 
+{
+    if(top==NULL){
+        return -1;
+    }
+    StackNode*temp=top;
+    int ans=top->data;
+    top=top->next;
+    delete(temp);
+    return ans;
+}
