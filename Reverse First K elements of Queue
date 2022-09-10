@@ -1,0 +1,24 @@
+link = https://practice.geeksforgeeks.org/problems/reverse-first-k-elements-of-queue/1?page=1&difficulty[]=-1&difficulty[]=0&category[]=Queue&sortBy=submissions
+
+queue<int> modifyQueue(queue<int> q, int k) {
+        stack<int>ans;
+        int n= q.size();
+        for(int i=0;i<k;i++){
+            int element = q.front();
+            q.pop();
+            ans.push(element);
+        }
+        
+        while(!ans.empty()){
+            int element = ans.top();
+            ans.pop();
+            q.push(element);
+        }
+        for(int i=0;i<n-k;i++){
+            int element = q.front();
+            q.pop();
+            q.push(element);
+        }
+        return q;
+        
+}
