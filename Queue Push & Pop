@@ -1,0 +1,21 @@
+link = https://practice.geeksforgeeks.org/problems/queue-designer/1?page=1&difficulty[]=-1&difficulty[]=0&category[]=Queue&sortBy=submissions
+
+queue<int>_push(int arr[],int n)
+{
+   queue<int>q;
+   for(int i=0;i<n;i++){
+       int ans = arr[i];
+       q.push(ans);
+   }
+   return q;
+}
+
+void _pop(queue<int>s)
+{
+    if(s.empty()){
+        return;
+    }
+    while(!s.empty()){
+      cout<< s.front()<<" ";
+      s.pop();
+    }
