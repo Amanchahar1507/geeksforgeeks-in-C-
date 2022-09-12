@@ -1,0 +1,27 @@
+link = https://practice.geeksforgeeks.org/problems/stack-using-two-queues/1?page=1&difficulty[]=-1&difficulty[]=0&category[]=Queue&sortBy=submissions
+
+void QueueStack :: push(int x)
+{
+        while(!q1.empty()){
+            int ans = q1.front();
+            q1.pop();
+            q2.push(ans);
+        }
+        q1.push(x);
+        while(!q2.empty()){
+            int ans = q2.front();
+            q2.pop();
+            q1.push(ans);
+        }
+}
+
+
+int QueueStack :: pop()
+{
+    if(q1.empty()){
+        return -1;
+    }
+    int ans = q1.front();
+    q1.pop();
+    return ans;
+}
