@@ -1,0 +1,16 @@
+link = https://practice.geeksforgeeks.org/problems/preorder-traversal/1?page=1&difficulty[]=-2&difficulty[]=-1&category[]=Stack&sortBy=submissions
+
+void preordertraversal(Node*root, vector<int>&ans){
+    if(root == NULL) return;
+    
+    ans.push_back(root->data);
+    preordertraversal(root->left,ans);
+    preordertraversal(root->right,ans);
+}
+
+
+vector <int> preorder(Node* root)
+{
+        vector<int>ans;
+        preordertraversal(root,ans);
+        return ans;
