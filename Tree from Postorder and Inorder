@@ -1,0 +1,33 @@
+link = https://practice.geeksforgeeks.org/problems/tree-from-postorder-and-inorder/1
+
+void createMapping(int in[], map<int,int>&m, int n){
+    for(int i=0;i<n;i++){
+        m[in[i]]  = i;
+    }
+}
+
+Node*solve(int in[], int post[], int n, int &index, int start, int end, map<int,int>&m){
+    if(index<0 || start>end){
+        return NULL;
+    }
+    
+    int element = post[index--];
+    Node*root = new Node(element);
+    
+    int position  = m[element];
+    
+    root->right = solve(in, post, n, index, position+1,end,m);
+    root->left = solve(in, post, n, index, start, position-1,m);
+    
+    return root;
+}
+
+Node *buildTree(int in[], int post[], int n) {
+        int postOrderIndex = n-1;
+        
+        map<int,int>NodeToIndex;
+        createMapping(in,NodeToIndex,n);
+        
+        Node*ans = solve(in, post, n, postOrderIndex, 0,n-1,NodeToIndex);
+        return ans;
+}
