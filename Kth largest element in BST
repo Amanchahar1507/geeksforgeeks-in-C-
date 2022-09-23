@@ -1,0 +1,25 @@
+link = https://practice.geeksforgeeks.org/problems/kth-largest-element-in-bst/1?page=1&difficulty[]=-1&difficulty[]=0&category[]=Binary%20Search%20Tree&sortBy=submissions
+
+class Solution
+{
+    public:
+    
+    void solve(Node*root, vector<int> &ans){
+        if(root == NULL){
+            return;
+        }
+        
+            solve(root->left ,ans);
+            ans.push_back(root->data);
+            solve(root->right,ans);
+        
+    }
+    
+    int kthLargest(Node *root, int K)
+    {
+        vector<int> ans;
+        solve(root,ans);
+        int temp = ans[ans.size()-K];
+        return temp;
+    }
+};
