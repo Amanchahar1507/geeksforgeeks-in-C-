@@ -1,0 +1,46 @@
+link = https://practice.geeksforgeeks.org/problems/predecessor-and-successor/1?page=1&difficulty[]=-1&difficulty[]=0&category[]=Binary%20Search%20Tree&sortBy=submissions
+
+void predes(Node*root,Node*&pre){
+    Node*leftTree = root->left;
+    while(leftTree!=NULL){
+        pre = leftTree;
+        leftTree = leftTree->right;
+    }
+}
+
+void suces(Node*root, Node*&suc){
+    Node*rightTree = root->right;
+    while(rightTree != NULL){
+        suc = rightTree;
+        rightTree = rightTree->left;
+    }
+    
+}
+
+void findPreSuc(Node* root, Node*& pre, Node*& suc, int key)
+{
+    if(root == NULL){
+        return;
+    }
+    Node*temp = root;
+    
+        if(temp->key > key){
+            suc = temp;
+            findPreSuc(temp->left,pre,suc,key);
+        }
+        else if(temp->key <key){
+            pre = temp;
+            findPreSuc(temp->right,pre,suc,key);
+        }
+        
+    if(temp->key == key){
+        if(temp->left){
+            predes(temp,pre);
+        }
+        
+        if(temp->right){
+            suces(temp,suc);
+        }
+        return;
+    }
+    
