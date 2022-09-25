@@ -1,0 +1,57 @@
+link = https://practice.geeksforgeeks.org/problems/merge-two-bst-s/1?page=1&difficulty[]=2&category[]=Binary%20Search%20Tree&sortBy=submissions
+
+class Solution
+{
+    public:
+    
+    void inorder(Node*root,vector<int>&ans){
+        if(root == NULL) return;
+        
+        inorder(root->left,ans);
+        ans.push_back(root->data);
+        inorder(root->right,ans);
+    }
+    
+    vector<int> mergearrays(vector<int>&ans1, vector<int>&ans2){
+        
+        int n = ans1.size();
+        int m = ans2.size();
+        vector<int>temp(n+m);
+        int i=0, j=0;
+        int k = 0;
+        while(i<n && j<m){
+            if(ans1[i]<ans2[j]){
+               temp[k++] = ans1[i];
+               i++;
+            }
+            else{
+                temp[k++] = ans2[j];
+                j++;
+            }
+        }
+        while(i<n){
+            temp[k++] = ans1[i];
+            i++;
+        }
+        while(j<m){
+            temp[k++] = ans2[j];
+            j++;
+        }
+        return temp;
+    }
+    
+   
+    vector<int> merge(Node *root1, Node *root2)
+    {
+       vector<int>ans1,ans2;
+       inorder(root1,ans1);
+       inorder(root2,ans2);
+       
+       vector<int>mergeArray;
+        mergeArray = mergearrays(ans1,ans2);
+        
+        return mergeArray;
+        
+
+    }
+};
