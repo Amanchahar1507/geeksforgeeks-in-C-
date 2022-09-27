@@ -1,0 +1,27 @@
+link = https://practice.geeksforgeeks.org/problems/preorder-to-postorder4423/1?page=1&difficulty[]=1&category[]=Binary%20Search%20Tree&sortBy=submissions
+
+
+class Solution{
+public:
+    //Function that constructs BST from its preorder traversal.
+    
+    Node* solve(int pre[], int mini, int maxi, int n,int &i){
+        if(i>=n) return NULL;
+        
+        if(pre[i] < mini || pre[i] > maxi) return NULL;
+        
+        Node*temp = newNode(pre[i++]);
+        temp->left = solve(pre, mini,temp->data,n,i);
+        temp->right = solve(pre,temp->data,maxi,n,i);
+        
+        return temp;
+    }
+    
+    Node* post_order(int pre[], int size)
+    {
+        int mini = INT_MIN;
+        int maxi = INT_MAX;
+        int i =0;
+        return solve(pre,mini,maxi,size,i);
+    }
+};
