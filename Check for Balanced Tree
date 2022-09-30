@@ -1,0 +1,39 @@
+link = https://practice.geeksforgeeks.org/problems/check-for-balanced-tree/1?page=1&category[]=Tree&sortBy=submissions
+
+class Solution{
+    public:
+    int flag=1;
+
+    int solver(Node* node){
+
+        if(node==NULL){
+
+            return -1;
+
+        }
+
+        int left=solver(node->left);
+
+        int right=solver(node->right);
+
+        if(abs(left-right)>1){
+
+            flag=0;
+
+        }
+
+        return 1+max(left,right);
+
+    }
+
+    bool isBalanced(Node *root)
+
+    {
+
+        solver(root);
+
+       return flag;
+
+    }
+
+};
