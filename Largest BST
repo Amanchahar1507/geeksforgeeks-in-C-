@@ -1,0 +1,49 @@
+link = https://practice.geeksforgeeks.org/problems/largest-bst/1?page=1&difficulty[]=1&category[]=Binary%20Search%20Tree&sortBy=submissions
+
+class Solution{
+    public:
+    
+    class info{
+      public:
+        
+        int maxi;
+        int mini;
+        bool isBST;
+        int size;
+    };
+    
+    info solve(Node*root, int &ans)
+    {
+        if(root == NULL){
+            return {INT_MIN,INT_MAX,true,0};
+        }
+        
+        info left = solve(root->left,ans);
+        info right = solve(root->right,ans);
+        
+        info CurrNode;
+        CurrNode.size = left.size+right.size+1;
+        CurrNode.maxi = max(root->data, right.maxi);
+        CurrNode.mini = min(root->data, left.mini);
+        
+        if(left.isBST && right.isBST && (root->data >left.maxi && root->data <right.mini)){
+            CurrNode.isBST = true;
+        }
+        else{
+            CurrNode.isBST = false;
+        }
+        
+        if(CurrNode.isBST){
+            ans = max(ans,CurrNode.size);
+        }
+        return CurrNode;
+    }
+    
+    int largestBst(Node *root)
+    {
+    	int maxiSize = 0;
+    	
+    	info temp = solve(root,maxiSize);
+    	return maxiSize;
+    }
+};
