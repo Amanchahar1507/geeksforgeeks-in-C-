@@ -1,0 +1,20 @@
+link = https://practice.geeksforgeeks.org/problems/construct-bst-from-post-order/1?page=1&difficulty[]=0&category[]=Binary%20Search%20Tree&sortBy=submissions
+
+
+Node*solve(int post[],int s,int e){
+    if(s>e)return NULL;
+    int mid = (s+e)/2;
+    Node*temp = new Node(post[mid]);
+    temp->left = solve(post,s,mid-1);
+    temp->right = solve(post,mid+1,e);
+    return temp;
+}
+
+Node *constructTree (int post[], int size)
+{
+    sort(post,post+size);
+    int s =0;
+    int e = size-1;
+    return solve(post,s,e);
+    
+}
