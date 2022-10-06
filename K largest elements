@@ -1,0 +1,38 @@
+link = https://practice.geeksforgeeks.org/problems/k-largest-elements3736/1?page=1&category[]=Heap&sortBy=submissions
+
+class Solution
+{
+    public:
+    //Function to return k largest elements from an array.
+    
+    //solution1
+    vector<int> kLargest(int arr[], int n, int k)
+    {
+        vector<int>ans;
+        sort(arr,arr+n);
+        
+        int m = n-1;
+        for(int i=m;i>=n-k;i--){
+            ans.push_back(arr[i]);
+        }
+        return ans;
+    }
+    
+    
+    //solution2
+    //max heap
+    vector<int> kLargest(int arr[], int n, int k){
+        priority_queue<int>q;
+        
+        for(int i=0;i<n;i++){
+            q.push(arr[i]);
+        }
+        
+        vector<int>ans;
+        while(k--){
+            ans.push_back(q.top());
+            q.pop();
+        }
+        return ans;
+    }    
+};
