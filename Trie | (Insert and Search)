@@ -1,0 +1,32 @@
+link = https://practice.geeksforgeeks.org/problems/trie-insert-and-search0651/1?page=1&difficulty[]=1&category[]=Trie&sortBy=submissions
+
+void insert(struct TrieNode *root, string key)
+{
+        struct TrieNode*child = root;
+        for(int i=0;i<key.size();i++){
+           int index = key[i]-'a';
+        
+           if(child->children[index] ==NULL){
+              child->children[index] = new TrieNode();
+           }
+           child = child->children[index];
+        
+        }
+        child->isLeaf = true;
+}
+
+//Function to use TRIE data structure and search the given string.
+bool search(struct TrieNode *root, string key) 
+{
+    struct TrieNode*child = root;
+    for(int i=0;i<key.size();i++){
+        int index = key[i]-'a';
+        
+        if(child->children[index] ==NULL){
+            return false;
+        }
+        child = child->children[index];
+    }    
+        
+        return child->isLeaf;
+}
