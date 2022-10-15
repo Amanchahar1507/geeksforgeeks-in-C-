@@ -1,0 +1,46 @@
+link = https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
+
+class Solution {
+  public:
+  
+  bool isCycleBFS(int node,unordered_map<int,bool>&visited,vector<int> adj[]){
+      visited[node] = 1;
+      unordered_map<int,int>parent;
+      parent[node] = -1;
+      
+      queue<int>q;
+      q.push(node);
+      while(!q.empty()){
+          int frontNode = q.front();
+          q.pop();
+          for(auto neighbour:adj[frontNode]){
+              if(visited[neighbour]==true && neighbour!=parent[frontNode]){
+                  return true;
+              }
+              else if(!visited[neighbour]){
+                 visited[neighbour] =1;                     
+                  q.push(neighbour);
+                  
+                  parent[neighbour] = frontNode;
+                
+              }
+          }
+      }
+      return false;
+  }
+    // Function to detect cycle in an undirected graph.
+    bool isCycle(int V, vector<int> adj[]) {
+        unordered_map<int,bool>visited;
+        for(int i=0;i<V;i++){
+            if(!visited[i]){
+                bool ans = isCycleBFS(i,visited,adj);
+                if(ans ==1){
+                    return 1;
+                }
+            }
+        }
+        return 0;
+    }
+    
+
+};
