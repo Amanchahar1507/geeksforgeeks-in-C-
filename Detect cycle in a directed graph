@@ -1,0 +1,78 @@
+link = https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
+
+//      using BFS
+
+// class Solution {
+//   public:
+//     bool isCyclic(int V, vector<int> adj[]) {
+        
+
+        
+//         //indegree
+//         vector<int>indegree(V);
+//         for(int i=0;i<V;i++){
+//             for(auto j:adj[i]){
+//                 indegree[j]++;
+//             }
+//         }
+        
+//         queue<int>q;
+//         for(int i=0;i<V;i++){
+//             if(indegree[i]==0)
+//                 q.push(i);
+//         }
+        
+//         int count =0;
+//         while(!q.empty()){
+//             int front = q.front();
+//             q.pop();
+            
+//             count++;
+//             for(auto neighbour:adj[front]){
+//                 indegree[neighbour]--;
+//                 if(indegree[neighbour]==0)
+//                     q.push(neighbour);
+//             }
+//         }
+//         if(count ==V)
+//             return false;
+//         return true;    
+//     }
+// };
+
+
+    //USING DFS
+class Solution {
+  public:
+  
+    bool cycleDFS(int node, vector<int>&visited, vector<int>adj[], vector<int>&dfsvisited){
+        visited[node] = 1;
+        dfsvisited[node] = 1;
+        
+        for(auto neighbour:adj[node]){
+            if(!visited[neighbour]){
+                bool DFS = cycleDFS(neighbour,visited,adj,dfsvisited);
+                if(DFS)
+                    return true;
+            }
+            else if(dfsvisited[neighbour])
+                return true;
+        }
+        dfsvisited[node]=0;
+        return false;
+        
+    }
+  
+    bool isCyclic(int V, vector<int> adj[]) {
+        vector<int>visited(V);
+        vector<int>dfsvisited(V);
+        for(int i=0;i<V;i++){
+            if(!visited[i]){
+                bool cycle = cycleDFS(i,visited,adj,dfsvisited);
+                if(cycle==true)
+                  return true;
+            }
+        }
+        return false;
+    }
+};
