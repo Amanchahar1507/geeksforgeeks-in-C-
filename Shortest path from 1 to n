@@ -1,0 +1,20 @@
+link = https://practice.geeksforgeeks.org/problems/shortest-path-from-1-to-n0156/1?page=1&sortBy=submissions&searchQuery=shortest
+
+class Solution{   
+public:
+    int minimumStep(int n){
+        //int temp = n;
+        int count =0;
+        while(n>1){
+            if(n%3==0){
+                 n=n/3;
+                 count++;
+            }
+            else if(n%3!=0){
+                n = n-1;
+                count++;
+            }
+        }
+        return count;
+    }
+};
