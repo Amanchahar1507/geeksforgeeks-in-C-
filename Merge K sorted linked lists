@@ -1,0 +1,57 @@
+
+
+class customCompare
+{
+public:
+
+    bool operator()(Node * a, Node*b)
+    {
+        return a->data > b->data;
+    }
+    
+};
+
+class Solution{
+  public:
+    //Function to merge K sorted linked list.
+    Node * mergeKLists(Node *arr[], int K)
+    {
+           // Your code here
+           
+           priority_queue<Node* , vector<Node*> , customCompare> pq;
+           
+           for(int i =0;i<K;i++)
+           {
+               Node * curr = arr[i];
+               
+               while(curr != nullptr)
+               {
+                   pq.push(curr);
+                   curr = curr->next;
+               }
+           }
+           
+           
+           if(pq.empty() == true)
+                return nullptr;
+            
+            
+           Node* newroot = pq.top();
+           Node* last = newroot;
+           pq.pop();
+           
+           
+           while(pq.empty() == false)
+           {
+               Node * temp = pq.top();
+               pq.pop();
+               
+               last->next = temp;
+               last = temp;
+           }
+           
+        //   last->next = NULL;
+           return newroot;
+           
+    }
+};
