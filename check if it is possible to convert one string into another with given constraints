@@ -1,0 +1,24 @@
+https://practice.geeksforgeeks.org/problems/check-if-it-is-possible-to-convert-one-string-into-another-with-given-constraints4116/1
+
+class Solution {
+  public:
+    int isItPossible(string S, string T, int M, int N) {
+        string str1="";
+        string str2="";
+        
+        for(int i=0;i<M;i++){
+            if(S[i]!='#'){
+                str1+=S[i];
+            }
+        }
+        for(int i=0;i<N;i++){
+            if(T[i]!='#'){
+                str2+=T[i];
+            }
+        }
+        
+        if(str1 == str2)
+            return 1;
+        return 0;    
+    }
+};
