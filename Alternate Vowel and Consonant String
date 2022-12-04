@@ -1,0 +1,58 @@
+link = https://practice.geeksforgeeks.org/problems/alternate-vowel-and-consonant-string2939/1
+
+class Solution{
+    public:
+    string rearrange (string S, int N)
+    {
+        int s1[26] = {0};
+        int s2[26] = {0};
+        string ans ="";
+        int count1=0;
+        int count2=0;
+        
+        for(int i=0;i<N;i++){
+            if(S[i]=='a'||S[i]=='e'||S[i]=='i'||S[i]=='o'||S[i]=='u'){
+                s1[S[i]-'a']++;
+                count1++;
+            }
+            else{
+                s2[S[i]-'a']++;
+                count2++;
+            }
+        }
+        
+        if(abs(count1-count2)>1) return "-1";
+        
+        bool isvol = count1>=count2 ? true:false;
+        
+        int i=0;
+        int j=0;
+        while(i<26 && j<26){
+            if(isvol){
+                if(s1[i]>0){
+                    ans += i+'a';
+                    s1[i]--;
+                    isvol = !isvol;
+                }
+                if(s1[i]==0) i++;
+            }
+            
+            else{
+                if(s2[j]>0){
+                    ans += j+'a';
+                    s2[j]--;
+                    isvol = !isvol;
+                }
+                if(s2[j]==0) j++;
+            }
+        }
+        
+        if(ans.size()==N) return ans;
+        
+        if(i<26 && isvol) ans += i+'a';
+        
+        if(j<26 && isvol) ans += j+'a';
+        
+        return ans;
+    }
+};
