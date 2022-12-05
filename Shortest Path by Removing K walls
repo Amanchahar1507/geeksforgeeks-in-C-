@@ -1,0 +1,77 @@
+link =https://practice.geeksforgeeks.org/problems/shortest-path-by-removing-k-walls/1
+
+class Solution {
+  public:
+    int shotestPath(vector<vector<int>> mat, int n, int m, int k) {
+        
+         if(mat[0][0]==1)
+            return -1;
+
+        vector<vector<vector<int>>>visited(n,vector<vector<int>>(m,vector<int>(k+1,0)));
+
+        queue<vector<int>>q;
+
+        q.push({0,0,k});
+
+        visited[0][0][k] = 1;
+
+         int CHrow[4] = {-1,0,1,0};
+
+         int CHcol[4] = {0,1,0,-1};
+
+         int ans = 0;
+
+        while(!q.empty()){
+
+            int size = q.size();
+
+            for(int i=0;i<size;i++){
+
+             auto v = q.front();
+
+             int row = v[0],col = v[1],walls = v[2];
+
+             q.pop();
+
+             if(row==n-1 && col==m-1) return ans;
+
+             for(int j=0;j<4;j++){
+
+              int newrow = row+CHrow[j];
+
+              int newcol = col+CHcol[j];
+
+               if(newrow>=0 && newrow<n && newcol>=0 && newcol<m ){
+
+                  if(mat[newrow][newcol]==0 && visited[newrow][newcol][walls]==0){
+
+                   visited[newrow][newcol][walls] = 1;
+
+                   q.push({newrow,newcol,walls});
+
+                  }
+
+                  else if(mat[newrow][newcol]==1 && walls>0 && visited[newrow][newcol][walls-1]==0){
+
+                       visited[newrow][newcol][walls-1] = 1;
+
+                       q.push({newrow,newcol,walls-1});
+
+                  }
+
+               }
+
+             }
+
+            }
+
+            ans++;
+
+          }
+
+         return -1;
+
+
+        
+    }
+};
