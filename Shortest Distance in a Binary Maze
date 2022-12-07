@@ -1,0 +1,41 @@
+link = https://practice.geeksforgeeks.org/problems/shortest-path-in-a-binary-maze-1655453161/1
+
+class Solution {
+  public:
+    int shortestPath(vector<vector<int>> &grid, pair<int, int> source,
+                     pair<int, int> destination) {
+        int n = grid.size();
+        int m = grid[0].size();
+        queue<pair<int,pair<int,int>>>q;
+        q.push({0,{source.first,source.second}});
+        vector<vector<int>>dist(n,vector<int>(m,1e9));
+        dist[source.first][source.second] = 0;
+        
+        if(source == destination)
+            return 0;
+        int delrow[] ={-1,0,1,0};
+        int delcol[] ={0,1,0,-1};
+        while(!q.empty()){
+            int distance = q.front().first;
+            int row = q.front().second.first;
+            int col = q.front().second.second;
+            q.pop();
+            
+            for(int i=0;i<4;i++){
+                int newrow = row + delrow[i];
+                int newcol = col + delcol[i];
+                
+                if(newrow>=0 && newrow<n && newcol>=0 && newcol<m &&
+                grid[newrow][newcol]==1 && distance +1 <dist[newrow][newcol] ){
+                    dist[newrow][newcol] = distance +1;
+                    
+                    if(newrow ==destination.first && newcol == destination.second){
+                        return distance +1;   
+                    }
+                    q.push({distance+1,{newrow,newcol}});
+                }
+            }
+        }
+        return -1;
+    }
+};
