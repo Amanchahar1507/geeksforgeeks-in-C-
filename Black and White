@@ -1,0 +1,36 @@
+link = https://practice.geeksforgeeks.org/problems/black-and-white-1587115620/1
+
+bool valid(int i,int j,int m,int n)
+{
+    return i>=0 && j>=0 && i<m && j<n;
+}
+
+
+long long numOfWays(int N, int M)
+{
+    long long ans=0,t=M*N;
+    int mod=1e9+7;
+    int i,j,k;
+    int dx[]={-2,-2,-1,-1,1,1,2,2};
+    int dy[]={-1,1,-2,2,-2,2,-1,1};
+    
+    for(i=0;i<M;i++)
+    {
+        for(j=0;j<N;j++)
+        {
+            int c=1;
+            
+            for(k=0;k<8;k++)
+            {
+                if(valid(i+dx[k],j+dy[k],M,N))
+                c++;
+            }
+            
+            ans+=(t-c);
+            ans%=mod;
+        }
+    }
+    
+    return ans;
+
+}
