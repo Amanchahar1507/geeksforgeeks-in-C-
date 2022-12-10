@@ -1,0 +1,51 @@
+link = https://practice.geeksforgeeks.org/problems/build-the-smallest2841/1
+
+string buildLowestNumber(string num, int k)
+{
+    string ans;
+    int n = num.size();
+    if(n==k)
+        return "0";
+    if(k==0){
+        return num;
+    }
+    
+    stack<char>s;
+    s.push(num[0]);
+    
+    for(int i=1;i<n;i++){
+        while(!s.empty() && k!=0 && s.top()>num[i]){
+            s.pop();
+            k--;
+        }
+        s.push(num[i]);
+    }
+    
+    while(!s.empty()){
+        char ch = s.top();
+        s.pop();
+        
+        if(k>0){
+            k--;
+            continue;
+        }
+        ans +=ch;
+    }
+    reverse(ans.begin(),ans.end());
+    
+     for(int i=0;i<ans.size();i++){
+
+        if(ans[i] != '0') {
+
+            ans = ans.substr(i);
+
+            return ans;
+
+        }
+
+    }
+
+    
+
+    return "0";
+}
