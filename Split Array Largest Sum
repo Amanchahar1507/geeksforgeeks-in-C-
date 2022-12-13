@@ -1,0 +1,43 @@
+link = https://practice.geeksforgeeks.org/problems/f04fd67b26b4828b6180715d8b1700426b637247/1
+
+class Solution {
+  public:
+    int splitArray(int arr[] ,int N, int K) {
+        int max = INT_MIN;
+        int sum = 0;
+        
+        for(int i=0;i<N;i++){
+            if(arr[i]>max){
+                max = arr[i];
+            }
+            sum = sum + arr[i];
+        }
+        
+        int low = max;
+        int high = sum;
+        int ans;
+        int mid;
+        while(low<=high){
+            mid = low + (high-low)/2;
+            
+            int count =1;
+            int s =0;
+            
+            for(int i=0;i<N;i++){
+                s +=arr[i];
+                if(s>mid){
+                    count++;
+                    s= arr[i];
+                }
+            }
+            if(count >K){
+                low = mid + 1;
+            }
+            else{
+                ans = mid;
+                high = mid-1;
+            }
+        }
+        return ans;
+    }
+};
