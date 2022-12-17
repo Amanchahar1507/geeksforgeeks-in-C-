@@ -1,0 +1,14 @@
+link= https://practice.geeksforgeeks.org/problems/break-a-number5913/1
+
+class Solution{   
+public:
+    int waysToBreakNumber(int N){
+        long long int mod = 1000000007;
+        long long int ans =0;
+        long long int x = (N+1)%mod;
+        long long int y = (N+2)%mod;
+        
+        ans = (x*y)/2;
+        return ans%mod;
+    }
+};
