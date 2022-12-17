@@ -1,0 +1,51 @@
+link = https://practice.geeksforgeeks.org/problems/detect-cycle-using-dsu/1?page=1&difficulty[]=-2&difficulty[]=-1&difficulty[]=0&category[]=Graph&sortBy=submissions
+
+    vector<int>parent,size;
+    
+    int findupar(int node){
+        if(node == parent[node])
+            return node;
+        return parent[node]= findupar(parent[node]);
+    }
+    
+    void unionbysize(int u, int v){
+        int ulp_u = findupar(u);
+        int ulp_v = findupar(v);
+        
+        if(ulp_u == ulp_v) return;
+        if(size[ulp_u] < size[ulp_v]){
+            parent[ulp_u] = ulp_v;
+            size[ulp_v] += size[ulp_u];
+        }
+        else{
+            parent[ulp_v] = ulp_u;
+            size[ulp_u] += size[ulp_u];
+        }
+    }
+
+class Solution
+{
+    public:
+    //Function to detect cycle using DSU in an undirected graph.
+	int detectCycle(int V, vector<int>adj[])
+	{
+	    parent.resize(V);
+	    size.resize(V);
+	    for(int i=0;i<V;i++){
+	        parent[i] = i;
+	        size[i] = 1;
+	    }
+	    for(int i=0;i<V;i++){
+	        for(auto it:adj[i]){
+	            if(parent[it] == parent[i] && i<it){
+	                return 1;
+	            }
+	            else{
+	                unionbysize(i,it);
+	            }
+	        }
+	    }
+	    
+	    return 0;
+	}
+};
