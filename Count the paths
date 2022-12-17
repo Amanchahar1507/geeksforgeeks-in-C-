@@ -1,0 +1,23 @@
+link = https://practice.geeksforgeeks.org/problems/count-the-paths4332/1?page=1&difficulty[]=-2&difficulty[]=-1&difficulty[]=0&category[]=Graph&sortBy=submissions
+
+class Solution {
+public:
+
+    int dfs(vector<int>adj[],int s,int d){
+        if(s==d) return 1;
+        
+        int ans =0;
+        for(auto it:adj[s]){
+            ans += dfs(adj,it,d);
+        }
+       return ans; 
+    }
+    
+	int possible_paths(vector<vector<int>>edges, int n, int s, int d){
+	    vector<int>adj[n];
+	        for(auto it:edges){
+	            adj[it[0]].push_back(it[1]);
+	        }
+	    return dfs(adj,s,d);
+   }
+};
