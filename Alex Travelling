@@ -1,0 +1,105 @@
+link = https://practice.geeksforgeeks.org/problems/alex-travelling/1
+
+class Solution {
+  public:
+    int minimumCost(vector<vector<int>>& flights, int n, int k) {
+    //   vector<pair<int ,int>>adj[n+1];
+    //   vector<int>dist(n+1,INT_MAX);
+    //   priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
+       
+    //   for(auto it:flights){
+    //       adj[it[0]].push_back({it[1],it[2]});
+    //   }
+       
+    //   dist[k] =0;
+       
+    //   pq.push({0,k});
+       
+       
+    //   while(!pq.empty()){
+    //       int distance = pq.top().first;
+    //       int node = pq.top().second;
+    //       pq.pop();
+           
+    //       for(auto it:adj[node]){
+    //           int adjnode = it.first;
+    //           int wt = it.second;
+    //           if(dist[adjnode] > (distance + wt) ){
+    //               dist[adjnode] = (distance + wt);
+    //               pq.push({dist[adjnode],adjnode});
+    //           }
+    //       }
+    //   }
+    //   int ans = 0;
+    //   for(int i=0;i<n;i++){
+    //       if(dist[i] == INT_MAX) return -1;
+    //       else
+    //         ans = max(ans,dist[i]);
+    //   }
+    //   return ans;
+    // }
+    
+    
+     vector<int> dist(n+1, 1e9);
+
+        vector<pair<int,int>> adj[n+1];
+
+        for(auto p:flights){
+
+            adj[p[0]].push_back({p[1], p[2]}); // to node and cost
+
+        }
+
+        priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>> pq;
+
+        dist[k]=0;
+
+        pq.push({0, k}); 
+
+        while(!pq.empty()){
+
+            auto p=pq.top();
+
+            pq.pop();
+
+            int node=p[1];
+
+            int d=p[0];
+
+            for(auto child:adj[node]){
+
+                int childnode=child.first;
+
+                int childdist=child.second;
+
+                
+
+                if(dist[childnode]> d + childdist){
+
+                    dist[childnode]=d + childdist;
+
+                    pq.push({dist[childnode], childnode});
+
+                }
+
+            }
+
+        }
+
+        int maxi=0;
+
+        for(int i=1;i<=n;i++){
+
+            maxi=max(maxi, dist[i]);
+
+            if(dist[i]==1e9)return -1;  // not visited
+
+        }
+
+        return maxi;
+
+    }
+
+
+    
+};
