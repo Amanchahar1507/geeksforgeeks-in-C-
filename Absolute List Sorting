@@ -1,0 +1,27 @@
+https://practice.geeksforgeeks.org/problems/absolute-list-sorting/1
+
+class Solution{
+    
+public:
+    Node* sortList(Node* head)
+    {
+        Node*curr = head->next;
+        Node*prev = head;
+        Node*forw = NULL;
+        
+        while(curr!=NULL){
+            if(curr->data < 0){
+                forw = curr->next;
+                curr->next = head;
+                prev->next = forw;
+                head = curr;
+                curr = forw;
+            }
+            else{
+                curr = curr->next;
+                prev = prev->next;
+            }
+        }
+        return head;
+    }
+};
