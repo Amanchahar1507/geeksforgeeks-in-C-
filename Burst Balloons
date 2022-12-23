@@ -1,0 +1,23 @@
+link = https://practice.geeksforgeeks.org/problems/burst-balloons/1
+
+class Solution {
+public:
+
+    int f(int i, int j, vector<int>&arr,vector<vector<int>>&dp){
+        if(i>j) return 0;
+        if(dp[i][j] != -1) return dp[i][j];
+        int maxi = INT_MIN;
+        for(int index = i; index<=j;index++){
+            int cost = arr[i-1]*arr[index]*arr[j+1] +f(i,index-1,arr,dp) + f(index+1,j,arr,dp);
+            maxi = max(maxi,cost);
+        }
+        return  dp[i][j]=maxi;
+    }
+
+    int maxCoins(int N, vector<int> &arr) {
+        arr.push_back(1);
+        arr.insert(arr.begin(),1);
+        vector<vector<int>>dp(N+1,vector<int>(N+1,-1));
+        return f(1,N,arr,dp);
+    }
+};
